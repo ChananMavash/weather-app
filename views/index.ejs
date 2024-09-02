@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h1>Weather App</h1>
+  <form action="/weather" method="get">
+    <input type="text" name="location" placeholder="Enter city or country" required>
+    <button type="submit">Get Weather</button>
+  </form>
+
+  <% if (error) { %>
+    <p class="error"><%= error %></p>
+  <% } else if (weatherData) { %>
+    <div class="weather-info">
+      <h2>Weather in <%= weatherData.name %>, <%= weatherData.sys.country %></h2>
+      <p>Temperature: <%= weatherData.main.temp %>°C</p>
+      <p>Humidity: <%= weatherData.main.humidity %>%</p>
+      <p>Weather: <%= weatherData.weather[0].description %></p>
+    </div>
+  <% } %>
+</body>
+</html>
